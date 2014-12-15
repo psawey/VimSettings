@@ -1,0 +1,4 @@
+VimSettings
+===========
+
+Sample .vimrc
