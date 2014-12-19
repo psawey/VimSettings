@@ -27,11 +27,8 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set clipboard=unnamed
-"XmlLint formatter
-"map @@x !%xmllint --format --recover -^M
-"au FileType xml exe ":silent %!xmllint --format --recover - 2>/dev/null"
-map @@x :silent %!xmllint --format --recover - 2>/dev/null
-
+"XmlLint Formatter
+map @@x :%!xmllint --format --recover - 2>/dev/null
 "OmniSharp Settings
 set runtimepath^=~/vimfiles/bundle/ctrlp.vim
 set noshowmatch
