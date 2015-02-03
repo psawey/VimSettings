@@ -23,21 +23,33 @@ set cmdheight=2
 set number
 set notimeout ttimeout ttimeoutlen=200
 set pastetoggle=<F11>
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set noexpandtab
 set clipboard=unnamed
-"XmlLint Formatter
+"XmlLint Formatting
 map @@x :%!xmllint --format --recover - 2>/dev/null
+"Xaml Syntax Highlighting
+au BufNewFile,BufRead *.xaml setf xml
+"Key Mappings
+map <F3> :Explore<CR>
+"SuperTab Settings
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
+let g:SuperTabClosePreviewOnPopupClose = 1
 "OmniSharp Settings
 set runtimepath^=~/vimfiles/bundle/ctrlp.vim
 set noshowmatch
 set completeopt=longest,menuone,preview
 set splitbelow
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+let g:Omnisharp_stop_server = 1
 augroup omnisharp_commands
   autocmd!
   autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+  autocmd FileType cs nnoremap <F5> :wa!<cr>:OmniSharpBuild<cr>
   autocmd FileType cs nnoremap <leader>b :wa!<cr>:OmniSharpBuildAsync<cr>
   autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
   autocmd BufWritePost *.cs call OmniSharp#AddToProject()
