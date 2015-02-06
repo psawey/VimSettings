@@ -36,6 +36,11 @@ au BufNewFile,BufRead *.xaml setf xml
 map <F3> :Explore<CR>
 imap . .<tab>
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+	\ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+	\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 "SuperTab Settings
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
@@ -59,8 +64,7 @@ autocmd FileType python set omnifunc=pythoncomplete#Complete
 "OmniSharp Settings
 set runtimepath^=~/vimfiles/bundle/ctrlp.vim
 set noshowmatch
-"set completeopt=longest,menuone,preview
-set completeopt-=preview
+set completeopt=longest,menuone
 set pumheight = 10
 set splitbelow
 let g:Omnisharp_stop_server = 1
