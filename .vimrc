@@ -29,23 +29,42 @@ set tabstop=4
 set noexpandtab
 set clipboard=unnamed
 "XmlLint Formatting
-map @@x :%!xmllint --format --recover - 2>/dev/null
+map @@x :%!xmllint --format --recover - 2>/dev/null<CR>
 "Xaml Syntax Highlighting
 au BufNewFile,BufRead *.xaml setf xml
 "Key Mappings
 map <F3> :Explore<CR>
+imap . .<tab>
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 "SuperTab Settings
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
 let g:SuperTabClosePreviewOnPopupClose = 1
+"Syntastic Settings
+let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+let g:syntastic_javascript_checkers = ['jshint']
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1 
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 5
+nnoremap <leader>co :Errors<cr>
+nnoremap <leader>cc :lclose<cr>
+nnoremap <leader>ck :SyntasticCheck<cr>
+autocmd FileType python set omnifunc=pythoncomplete#Complete
 "OmniSharp Settings
 set runtimepath^=~/vimfiles/bundle/ctrlp.vim
 set noshowmatch
-set completeopt=longest,menuone,preview
+"set completeopt=longest,menuone,preview
+set completeopt-=preview
+set pumheight = 10
 set splitbelow
-let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 let g:Omnisharp_stop_server = 1
+highlight Pmenu ctermbg=238 gui=bold
 augroup omnisharp_commands
   autocmd!
   autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
