@@ -41,6 +41,10 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 	\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+"CtrlP Settings
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+nnoremap <leader>cp :CtrlP<cr>
 "SuperTab Settings
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
@@ -48,6 +52,7 @@ let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&complet
 let g:SuperTabClosePreviewOnPopupClose = 1
 "Syntastic Settings
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+"let g:syntastic_cs_quiet_messages = { 'level': 'warnings' }
 let g:syntastic_javascript_checkers = ['jshint']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
