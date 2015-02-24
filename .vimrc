@@ -41,6 +41,8 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 	\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+inoremap ( ()<Esc>i
+inoremap { {}<Esc>i
 "CtrlP Settings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -54,6 +56,7 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 "let g:syntastic_cs_quiet_messages = { 'level': 'warnings' }
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_python_checkers = ['flake8', 'python']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -66,6 +69,7 @@ nnoremap <leader>co :Errors<cr>
 nnoremap <leader>cc :lclose<cr>
 nnoremap <leader>ck :SyntasticCheck<cr>
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal completeopt-=preview
 "OmniSharp Settings
 set runtimepath^=~/vimfiles/bundle/ctrlp.vim
 set noshowmatch
