@@ -68,8 +68,8 @@ let g:syntastic_loc_list_height = 5
 nnoremap <leader>co :Errors<cr>
 nnoremap <leader>cc :lclose<cr>
 nnoremap <leader>ck :SyntasticCheck<cr>
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType python setlocal completeopt-=preview
+autocmd FileType py set omnifunc=pythoncomplete#Complete
+autocmd FileType python set completeopt-=preview
 "OmniSharp Settings
 set runtimepath^=~/vimfiles/bundle/ctrlp.vim
 set noshowmatch
