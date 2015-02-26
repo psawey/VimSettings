@@ -77,7 +77,7 @@ set completeopt=longest,menuone
 set pumheight = 10
 set splitbelow
 let g:Omnisharp_stop_server = 1
-highlight Pmenu ctermbg=238 gui=bold
+highlight Pmenu ctermbg=87 gui=bold
 augroup omnisharp_commands
   autocmd!
   autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
