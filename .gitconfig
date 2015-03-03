@@ -1,0 +1,74 @@
+[user]
+	name = 
+	email = 
+[grep]
+	extendRegexp = true
+	lineNumber = true
+[push]
+	default = current
+[difftool "sourcetree"]
+	cmd = 'C:/Program Files (x86)/WinMerge/WinMergeU.exe' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = 'C:/Program Files/TortoiseHg/kdiff3.exe' \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	trustExitCode = true
+[alias]
+	ggrep = grep --break --heading --line-number
+	st = status
+	br = branch
+	ci = commit
+	co = checkout
+	up = "!git remote update -p; git merge --ff-only @{u}"
+	alias = config --get-regexp ^alias\\.
+	ut = ls-files --others --exclude-standard
+	mo = ls-files --modified --exclude-standard
+	in = "!f() { git log --stat $1..origin/$1; }; f"
+	out = "!f() { git log --stat origin/$1..$1; }; f"
+	staged = diff --name-status --cached
+	ls = ls-files	
+	amo = add -u
+	last = "!f() { git log --stat -p -$1; }; f"
+	rf = remote -v update #Remote Refresh
+	bs = branch -vv #Branch Status
+    rfs = "!f() { git rf && echo && git bs; }; f" #Remote Refresh Branch Status
+	pmerge = "!f() { git merge --no-commit --no-ff --stat $1; }; f" #Preview Merge
+	ignored = !git ls-files -v | grep "^[[:lower:]]" #List Ignored Files
+	ignore = "!f() { git update-index --assume-unchanged $1; }; f" #Ignore File
+	track = "!f() { git update-index --no-assume-unchanged $1; }; f" #Track Ignored File
+	glog = log --graph --decorate
+	slog = log -w -b #Ignores Whitespace on Log
+	sdiff = diff -w -b #Ignores Whitespace on Diff
+	#Tfs Related Aliases
+	tpull = tfs pull --debug #Tfs Pull
+	trpull = tfs pull --rebase --debug #Tfs Pull Rebase
+	tpush = tfs rcheckin --debug #Tfs Push
+	trf = tfs fetch --debug #Tfs Remote Refresh
+	tbs = log --pretty=format:"%h%x09%an%x09%ad%x09%s" master..tfs/default #Tfs Branch Status
+	trfs = "!f() { git trf && echo && git tbs; }; f" #Tfs Remote Refresh master Branch Status
+[color]
+	ui = auto
+	interactive = auto
+[color "status"]
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
+[color "diff"]
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
+[gui]
+	recentrepo = 
+[merge]
+	tool = kdiff3
+[credential]
+[diff]
+	guitool = kdiff3
+[core]
+	editor = vim
+	autocrlf = true
+	preloadindex = true
+	fscache = true
+	whitespace = cr-at-eol
+[mergetool "kdiff3"]
+	path = C:/Program Files/TortoiseHg/kdiff3.exe
+[difftool "kdiff3"]
+	path = C:/Program Files/TortoiseHg/kdiff3.exe
