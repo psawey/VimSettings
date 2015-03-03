@@ -43,6 +43,8 @@ inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 inoremap ( ()<Esc>i
 inoremap { {}<Esc>i
+inoremap ' ''<Esc>i
+inoremap " ""<Esc>i
 "CtrlP Settings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -68,6 +70,7 @@ let g:syntastic_loc_list_height = 5
 nnoremap <leader>co :Errors<cr>
 nnoremap <leader>cc :lclose<cr>
 nnoremap <leader>ck :SyntasticCheck<cr>
+nnoremap <leader>rp :! python %<cr>
 autocmd FileType py set omnifunc=pythoncomplete#Complete
 autocmd FileType python set completeopt-=preview
 "OmniSharp Settings
