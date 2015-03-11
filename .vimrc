@@ -28,6 +28,7 @@ set softtabstop=4
 set tabstop=4
 set noexpandtab
 set clipboard=unnamed
+set noeol
 "XmlLint Formatting
 map @@x :%!xmllint --format --recover - 2>/dev/null<CR>
 "Xaml Syntax Highlighting
@@ -41,10 +42,6 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 	\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
-inoremap ( ()<Esc>i
-inoremap { {}<Esc>i
-inoremap ' ''<Esc>i
-inoremap " ""<Esc>i
 "CtrlP Settings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -79,7 +76,7 @@ set noshowmatch
 set completeopt=longest,menuone
 set pumheight = 10
 set splitbelow
-let g:Omnisharp_stop_server = 1
+let g:Omnisharp_stop_server = 0
 highlight Pmenu ctermbg=87 gui=bold
 augroup omnisharp_commands
   autocmd!
@@ -115,4 +112,3 @@ nnoremap <leader>tp :OmniSharpAddToProject<cr>
 nnoremap <leader>ss :OmniSharpStartServer<cr>
 nnoremap <leader>sp :OmniSharpStopServer<cr>
 nnoremap <leader>th :OmniSharpHighlightTypes<cr>
-set hidden
