@@ -29,6 +29,7 @@ set tabstop=4
 set noexpandtab
 set clipboard=unnamed
 set noeol
+set autoread
 "XmlLint Formatting
 map @@x :%!xmllint --format --recover - 2>/dev/null<CR>
 "Xaml Syntax Highlighting

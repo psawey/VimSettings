@@ -1,0 +1,9 @@
+Omnisharp
+YouCompleteMe
+auto-pairs
+ctrlp.vim
+jedi-vim
+supertab
+syntastic
+vim-csharp
+vim-dispatch
