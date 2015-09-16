@@ -21,6 +21,7 @@ set t_vb=
 set mouse=a
 set cmdheight=2
 set number
+set relativenumber
 set notimeout ttimeout ttimeoutlen=200
 set pastetoggle=<F11>
 set shiftwidth=4
@@ -34,8 +35,10 @@ hi Search guibg=peru guifg=wheat
 hi Search cterm=NONE ctermfg=grey ctermbg=blue
 "XmlLint Formatting
 map @@x :%!xmllint --format --recover - 2>/dev/null<CR>
+map @@j :%!python -m json.tool<CR>
 "Xaml Syntax Highlighting
 au BufNewFile,BufRead *.xaml setf xml
+au BufNewFile,BufRead *.nunit setf xml
 "Key Mappings
 map <F3> :Explore<CR>
 imap . .<tab>
@@ -45,10 +48,18 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 	\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
-"CtrlP Settings
-let g:ctrlp_map = '<c-p>'
+"CtrlP Settings let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 nnoremap <leader>cp :CtrlP<cr>
+let g:ctrlp_max_files=0
+let g:ctrlp_follow_symlinks=1
+"vim git Settings
+nnoremap <leader>gs :Gstatus<cr>
+"Auto reload .vimrc
+augroup reload_vimrc " {
+	autocmd!
+	autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
 "SuperTab Settings
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
@@ -77,9 +88,9 @@ autocmd FileType python set completeopt-=preview
 set runtimepath^=~/vimfiles/bundle/ctrlp.vim
 set noshowmatch
 set completeopt=longest,menuone
-set pumheight = 10
+set pumheight=10
 set splitbelow
-let g:Omnisharp_stop_server = 0
+let g:Omnisharp_stop_server = 1
 highlight Pmenu ctermbg=87 gui=bold
 augroup omnisharp_commands
   autocmd!
