@@ -30,6 +30,8 @@ set noexpandtab
 set clipboard=unnamed
 set noeol
 set autoread
+hi Search guibg=peru guifg=wheat
+hi Search cterm=NONE ctermfg=grey ctermbg=blue
 "XmlLint Formatting
 map @@x :%!xmllint --format --recover - 2>/dev/null<CR>
 "Xaml Syntax Highlighting
