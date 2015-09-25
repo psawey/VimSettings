@@ -27,7 +27,7 @@ set pastetoggle=<F11>
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set noexpandtab
+set expandtab
 set clipboard=unnamed
 set noeol
 set autoread
