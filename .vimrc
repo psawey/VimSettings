@@ -48,6 +48,8 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 	\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 "CtrlP Settings let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 nnoremap <leader>cp :CtrlP<cr>
@@ -66,7 +68,8 @@ let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
 let g:SuperTabClosePreviewOnPopupClose = 1
 "Syntastic Settings
-let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+"let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+let g:syntastic_cs_checkers = ['code_checker']
 "let g:syntastic_cs_quiet_messages = { 'level': 'warnings' }
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_python_checkers = ['flake8', 'python']
@@ -90,7 +93,6 @@ set noshowmatch
 set completeopt=longest,menuone
 set pumheight=10
 set splitbelow
-let g:Omnisharp_stop_server = 1
 highlight Pmenu ctermbg=87 gui=bold
 augroup omnisharp_commands
   autocmd!
@@ -125,4 +127,8 @@ nnoremap <leader>cf :OmniSharpCodeFormat<cr>
 nnoremap <leader>tp :OmniSharpAddToProject<cr>
 nnoremap <leader>ss :OmniSharpStartServer<cr>
 nnoremap <leader>sp :OmniSharpStopServer<cr>
-nnoremap <leader>th :OmniSharpHighlightTypes<cr>
+nnoremap <leader>ht :OmniSharpHighlightTypes<cr>
+nnoremap <leader>rt :OmniSharpRunTests<cr>
+nnoremap <leader>rf :OmniSharpRunTestFixture<cr>
+nnoremap <leader>ra :OmniSharpRunAllTests<cr>
+nnoremap <leader>rl :OmniSharpRunLastTests<cr>
