@@ -42,6 +42,7 @@ au BufNewFile,BufRead *.nunit setf xml
 "Key Mappings
 map <F3> :Explore<CR>
 imap . .<tab>
+nnoremap <F4> :buffers<CR>:b<Space>
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 	\ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
