@@ -40,7 +40,10 @@ map @@j :%!python -m json.tool<CR>
 au BufNewFile,BufRead *.xaml setf xml
 au BufNewFile,BufRead *.nunit setf xml
 "Key Mappings
-map <F3> :Explore<CR>
+inoremap jj <ESC>
+map <F2> :Explore<CR>
+nnoremap <F3> :buffers<CR>:buffer<Space>
+nnoremap <F4> :tabs<CR>:"<args>"gt<Space>
 imap . .<tab>
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
@@ -50,6 +53,21 @@ inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+"Split Navigation Alt - Movement
+nmap <silent> <A-k> :wincmd k<CR>
+nmap <silent> <A-j> :wincmd j<CR>
+nmap <silent> <A-h> :wincmd h<CR>
+nmap <silent> <A-l> :wincmd l<CR>
+nmap <silent> <A-c> :hide<CR>
+"Maximize Split
+nmap <silent> <A-m> :wincmd _<CR>
+"All Splits Equal
+nmap <silent> <A-e> :wincmd =<CR>
+"Page Up Down
+nmap <silent> <A-d> <C-d>
+nmap <silent> <A-u> <C-u>
+"Tab Close
+nnoremap <leader>ct :tabclose<cr>
 "CtrlP Settings let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 nnoremap <leader>cp :CtrlP<cr>
@@ -57,6 +75,8 @@ let g:ctrlp_max_files=0
 let g:ctrlp_follow_symlinks=1
 "vim git Settings
 nnoremap <leader>gs :Gstatus<cr>
+"NoEOL
+let b:PreserveNoEOL = 1
 "Auto reload .vimrc
 augroup reload_vimrc " {
 	autocmd!
@@ -120,7 +140,7 @@ set cmdheight=2
 nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
 vnoremap <leader><space> :call OmniSharp#GetCodeActions('visual')<cr>
 nnoremap <leader>nm :OmniSharpRename<cr>
-nnoremap <F2> :OmniSharpRename<cr>
+nnoremap <F6> :OmniSharpRename<cr>
 command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
 nnoremap <leader>rl :OmniSharpReloadSolution<cr>
 nnoremap <leader>cf :OmniSharpCodeFormat<cr>
@@ -128,7 +148,7 @@ nnoremap <leader>tp :OmniSharpAddToProject<cr>
 nnoremap <leader>ss :OmniSharpStartServer<cr>
 nnoremap <leader>sp :OmniSharpStopServer<cr>
 nnoremap <leader>ht :OmniSharpHighlightTypes<cr>
-nnoremap <leader>rt :OmniSharpRunTests<cr>
-nnoremap <leader>rf :OmniSharpRunTestFixture<cr>
-nnoremap <leader>ra :OmniSharpRunAllTests<cr>
-nnoremap <leader>rl :OmniSharpRunLastTests<cr>
+nnoremap <leader>rt :OmniSharpRunTests<cr> :Dispatch<cr>
+nnoremap <leader>rf :OmniSharpRunTestFixture<cr> :Dispatch<cr>
+nnoremap <leader>ra :OmniSharpRunAllTests<cr> :Dispatch<cr>
+nnoremap <leader>rl :OmniSharpRunLastTests<cr> :Dispatch<cr>
