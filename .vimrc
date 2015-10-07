@@ -41,14 +41,14 @@ au BufNewFile,BufRead *.xaml setf xml
 au BufNewFile,BufRead *.nunit setf xml
 "Key Mappings
 map <F3> :Explore<CR>
-imap . .<tab>
 nnoremap <F4> :buffers<CR>:b<Space>
+autocmd FileType cs inoremap . .<tab>
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 	\ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 	\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+autocmd FileType cs inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
 "CtrlP Settings let g:ctrlp_map = '<c-p>'
