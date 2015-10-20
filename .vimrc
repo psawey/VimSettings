@@ -27,9 +27,9 @@ set pastetoggle=<F11>
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
+set noeol
 set expandtab
 set clipboard=unnamed
-set noeol
 set autoread
 hi Search guibg=peru guifg=wheat
 hi Search cterm=NONE ctermfg=grey ctermbg=blue
@@ -41,7 +41,9 @@ au BufNewFile,BufRead *.xaml setf xml
 au BufNewFile,BufRead *.nunit setf xml
 "Key Mappings
 inoremap jj <ESC>
-map <F2> :Explore<CR>
+map <F2> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize = 60
+let g:NERDTreeWinPos = "right"
 nnoremap <F3> :buffers<CR>:buffer<Space>
 nnoremap <F4> :tabs<CR>:"<args>"gt<Space>
 imap . .<tab>
@@ -51,8 +53,12 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 	\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
-inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
-inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+inoremap <expr> <A-j> ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> <A-k> ((pumvisible())?("\<C-p>"):("k"))
+inoremap <expr> <A-n> ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> <A-p> ((pumvisible())?("\<C-p>"):("k"))
+let mapleader = "\<Space>"
+"Split Navigation Alt - Movement
 "Split Navigation Alt - Movement
 nmap <silent> <A-k> :wincmd k<CR>
 nmap <silent> <A-j> :wincmd j<CR>
@@ -68,6 +74,9 @@ nmap <silent> <A-d> <C-d>
 nmap <silent> <A-u> <C-u>
 "Tab Close
 nnoremap <leader>ct :tabclose<cr>
+" Tab Navigation
+nnoremap <silent> <A-,> :tabp<cr>
+nnoremap <silent> <A-.> :tabn<cr>
 "CtrlP Settings let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 nnoremap <leader>cp :CtrlP<cr>
@@ -114,6 +123,7 @@ set noshowmatch
 set completeopt=longest,menuone
 set pumheight=10
 set splitbelow
+let g:Omnisharp_stop_server = 0
 highlight Pmenu ctermbg=87 gui=bold
 augroup omnisharp_commands
   autocmd!
@@ -123,7 +133,7 @@ augroup omnisharp_commands
   autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
   autocmd BufWritePost *.cs call OmniSharp#AddToProject()
   autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
-  autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<cr>
+  autocmd FileType cs nnoremap <leader>gd :OmniSharpGotoDefinition<cr>
   autocmd FileType cs nnoremap <leader>fi :OmniSharpFindImplementations<cr>
   autocmd FileType cs nnoremap <leader>ft :OmniSharpFindType<cr>
   autocmd FileType cs nnoremap <leader>fs :OmniSharpFindSymbol<cr>
@@ -149,7 +159,10 @@ nnoremap <leader>tp :OmniSharpAddToProject<cr>
 nnoremap <leader>ss :OmniSharpStartServer<cr>
 nnoremap <leader>sp :OmniSharpStopServer<cr>
 nnoremap <leader>ht :OmniSharpHighlightTypes<cr>
-nnoremap <leader>rt :OmniSharpRunTests<cr> :Dispatch<cr>
-nnoremap <leader>rf :OmniSharpRunTestFixture<cr> :Dispatch<cr>
-nnoremap <leader>ra :OmniSharpRunAllTests<cr> :Dispatch<cr>
-nnoremap <leader>rl :OmniSharpRunLastTests<cr> :Dispatch<cr>
+nnoremap <leader>rt :OmniSharpRunTests<cr> :Dispatch!<cr>
+nnoremap <leader>rf :OmniSharpRunTestFixture<cr> :Dispatch!<cr>
+nnoremap <leader>ra :OmniSharpRunAllTests<cr> :Dispatch!<cr>
+nnoremap <leader>rl :OmniSharpRunLastTests<cr> :Dispatch!<cr>
+let c_space_errors = 1
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace '\s\+$'
