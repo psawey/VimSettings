@@ -7,3 +7,7 @@ supertab
 syntastic
 vim-csharp
 vim-dispatch
+omnisharp-vim
+PreserveNoEOL
+vimgitgutter
+vim-ps1

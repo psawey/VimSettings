@@ -102,6 +102,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 nnoremap <leader>co :Errors<cr>
+nnoremap <leader>bo :Copen<cr>
 nnoremap <leader>cc :lclose<cr>
 nnoremap <leader>ck :SyntasticCheck<cr>
 nnoremap <leader>rp :! python %<cr>
