@@ -46,19 +46,18 @@ let g:NERDTreeWinSize = 60
 let g:NERDTreeWinPos = "right"
 nnoremap <F3> :buffers<CR>:buffer<Space>
 nnoremap <F4> :tabs<CR>:"<args>"gt<Space>
-imap . .<tab>
+autocmd FileType cs imap . .<tab>
+inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 	\ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 	\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 inoremap <expr> <A-j> ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> <A-k> ((pumvisible())?("\<C-p>"):("k"))
 inoremap <expr> <A-n> ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> <A-p> ((pumvisible())?("\<C-p>"):("k"))
 let mapleader = "\<Space>"
-"Split Navigation Alt - Movement
 "Split Navigation Alt - Movement
 nmap <silent> <A-k> :wincmd k<CR>
 nmap <silent> <A-j> :wincmd j<CR>
