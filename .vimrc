@@ -41,10 +41,10 @@ au BufNewFile,BufRead *.xaml setf xml
 au BufNewFile,BufRead *.nunit setf xml
 "Key Mappings
 inoremap jj <ESC>
-map <F2> :NERDTreeToggle<CR>
+map <F3> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 60
 let g:NERDTreeWinPos = "right"
-nnoremap <F3> :buffers<CR>:buffer<Space>
+nnoremap <F2> :buffers<CR>:buffer<Space>
 nnoremap <F4> :tabs<CR>:"<args>"gt<Space>
 autocmd FileType cs imap . .<tab>
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
@@ -152,16 +152,18 @@ vnoremap <leader><space> :call OmniSharp#GetCodeActions('visual')<cr>
 nnoremap <leader>nm :OmniSharpRename<cr>
 nnoremap <F6> :OmniSharpRename<cr>
 command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
-nnoremap <leader>rl :OmniSharpReloadSolution<cr>
+nnoremap <leader>rs :OmniSharpReloadSolution<cr>
 nnoremap <leader>cf :OmniSharpCodeFormat<cr>
 nnoremap <leader>tp :OmniSharpAddToProject<cr>
 nnoremap <leader>ss :OmniSharpStartServer<cr>
 nnoremap <leader>sp :OmniSharpStopServer<cr>
 nnoremap <leader>ht :OmniSharpHighlightTypes<cr>
-nnoremap <leader>rt :OmniSharpRunTests<cr> :Dispatch!<cr>
-nnoremap <leader>rf :OmniSharpRunTestFixture<cr> :Dispatch!<cr>
-nnoremap <leader>ra :OmniSharpRunAllTests<cr> :Dispatch!<cr>
-nnoremap <leader>rl :OmniSharpRunLastTests<cr> :Dispatch!<cr>
+nnoremap <leader>rt :OmniSharpRunTests<cr> :Dispatch<cr>
+nnoremap <leader>rf :OmniSharpRunTestFixture<cr> :Dispatch<cr>
+nnoremap <leader>ra :OmniSharpRunAllTests<cr> :Dispatch<cr>
+nnoremap <leader>rl :OmniSharpRunLastTests<cr> :Dispatch<cr>
 let c_space_errors = 1
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace '\s\+$'
+nnoremap <leader>ws :%s/\s\+$//e<CR>
+command! -nargs=1 PSake Dispatch C:\\Windows\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe psake <q-args>
