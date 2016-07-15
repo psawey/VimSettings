@@ -50,13 +50,14 @@ autocmd FileType cs imap . .<tab>
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-	\ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+\ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-	\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 inoremap <expr> <A-j> ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> <A-k> ((pumvisible())?("\<C-p>"):("k"))
 inoremap <expr> <A-n> ((pumvisible())?("\<C-n>"):("j"))
 inoremap <expr> <A-p> ((pumvisible())?("\<C-p>"):("k"))
+nmap <silent> <A-i> =i{
 let mapleader = "\<Space>"
 "Split Navigation Alt - Movement
 nmap <silent> <A-k> :wincmd k<CR>
@@ -104,7 +105,7 @@ let g:syntastic_python_checkers = ['flake8', 'python']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1 
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
@@ -113,8 +114,12 @@ nnoremap <leader>co :Errors<cr>
 nnoremap <leader>bo :Copen<cr>
 nnoremap <leader>cc :lclose<cr>
 nnoremap <leader>ck :SyntasticCheck<cr>
-nnoremap <leader>rp :! python %<cr>
-autocmd FileType py set omnifunc=pythoncomplete#Complete
+"nnoremap <leader>rp :new | r ! python %<cr>
+nnoremap <silent> <leader>= :exe "resize " . (winheight(0) * 3/2)<cr>
+nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<cr>
+nnoremap <silent> <leader>v= :exe "vertical resize " . (winheight(0) * 3/2)<cr>
+nnoremap <silent> <leader>v- :exe "vertical resize " . (winheight(0) * 2/3)<cr>
+autocmd FileType py set omnifunc=jedi#Complete
 autocmd FileType python set completeopt-=preview
 "OmniSharp Settings
 set runtimepath^=~/vimfiles/bundle/ctrlp.vim
@@ -133,6 +138,7 @@ augroup omnisharp_commands
   autocmd BufWritePost *.cs call OmniSharp#AddToProject()
   autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
   autocmd FileType cs nnoremap <leader>gd :OmniSharpGotoDefinition<cr>
+  autocmd FileType cs nnoremap <leader>gp :execute "normal!<c-O>"<cr>
   autocmd FileType cs nnoremap <leader>fi :OmniSharpFindImplementations<cr>
   autocmd FileType cs nnoremap <leader>ft :OmniSharpFindType<cr>
   autocmd FileType cs nnoremap <leader>fs :OmniSharpFindSymbol<cr>
@@ -167,3 +173,12 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace '\s\+$'
 nnoremap <leader>ws :%s/\s\+$//e<CR>
 command! -nargs=1 PSake Dispatch C:\\Windows\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe psake <q-args>
+command! UnMinify call UnMinify()
+function! UnMinify()
+    %s/{\ze[^\r\n]/{\r/g
+    %s/){/) {/g
+    %s/};\?\ze[^\r\n]/\0\r/g
+    %s/;\ze[^\r\n]/;\r/g
+    %s/[^\s]\zs[=&|]\+\ze[^\s]/ \0 /g
+    normal ggVG=
+endfunction
