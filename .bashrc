@@ -1,13 +1,12 @@
-export TERM=msys
 set show-all-if-ambiguous on
 set completion-ignore-case on
 
 SSH_ENV=$HOME/.ssh/environment
-HISTSIZE=5000
-HISTFILESIZE=10000
+HISTSIZE=
+HISTFILESIZE=
 
-alias grep='C:\\cygwin64\\bin\\grep --color=auto'
-alias hist='history 5000'
+alias grep='grep --color=auto'
+alias hist='history'
 alias ll='ls -lhA'
 alias ls='ls -CF'
 alias lsl='ls -lhFA | less'
