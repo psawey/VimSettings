@@ -1,22 +1,17 @@
-syntax on
-"if !("gui_running")
-    "set term=xterm
-    "set t_Co=256
-    "let &t_AB="\e[48;5;%dm"
-    "let &t_AF="\e[38;5;%dm"
-    "colorscheme zenburn
-"endif
-colorscheme desert
+set runtimepath^=$HOME/vimfiles/autoload
+colorscheme vsDesert
 set ai
 set hlsearch
-filetype indent plugin on
+set nocp
+runtime autoload/pathogen.vim
 execute pathogen#infect()
+syntax on
+filetype indent plugin on
 set nocompatible
 set backspace=indent,eol,start
 set hidden
 set wildmenu
 set ignorecase
-set smartcase
 set nostartofline
 if has('cmdline_info')
     set ruler
@@ -45,7 +40,7 @@ set autowrite
 set omnifunc=syntaxcomplete#Complete
 set history=1000
 set showmode
-set incsearch
+set directory=$HOME/vimfiles/swapfiles//
 set wildmode=list:longest,full
 set virtualedit=onemore
 set linespace=0
@@ -54,18 +49,18 @@ set cursorline
 hi CursorLine term=bold cterm=bold guibg=Grey40
 hi Search guibg=peru guifg=wheat cterm=NONE ctermfg=grey ctermbg=blue
 "XmlLint Formatting
-map @@x :%!xmllint --format --recover - 2>/dev/null<CR>
-map @@j :%!python -m json.tool<CR>
+map @@x :set filetype=xml<CR> :%!xmllint --format --recover - 2>/dev/null<CR>
+map @@j :set filetype=xml<CR> :%!python -m json.tool<CR>
 "Xaml Syntax Highlighting
 au BufNewFile,BufRead *.xaml setf xml
 au BufNewFile,BufRead *.nunit setf xml
 "Key Mappings
-nnoremap <silent> <leader>/ :noh<cr>
 inoremap jj <ESC>
 map <F3> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize = 60
 let g:NERDTreeWinPos = "right"
 let g:AutoPairsMapBS=0
+let g:airline_theme='luna'
 noremap <F2> :buffers<CR>:buffer<Space>
 nnoremap <F4> :tabs<CR>
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -81,6 +76,8 @@ nmap <silent> <A-i> =i{
 let mapleader = "\<Space>"
 nmap <silent> <A-f> *
 nmap <silent> <A-r> <C-r>
+nnoremap <silent> <leader>/ :noh<cr>
+nnoremap <silent> <leader>o o<ESC>
 "Split Navigation Alt - Movement
 nmap <silent> <A-k> :wincmd k<CR>
 nmap <silent> <A-j> :wincmd j<CR>
@@ -94,6 +91,12 @@ nmap <silent> <A-e> :wincmd =<CR>
 "Page Up Down
 nmap <A-d> <C-d>
 nmap <A-u> <C-u>
+"Blockwise Visual Mode
+nmap <A-v> <C-v>
+"Increment/Decrement
+nmap <A-a> <C-a>
+nmap <A-x> <C-x>
+nmap <leader>l :set list!<cr>
 "Scroll Up Down
 nmap <silent> <A-s> <C-e>
 nmap <silent> <A-o> <C-y>
@@ -105,8 +108,6 @@ nnoremap <silent> <A-.> :tabn<cr>
 set switchbuf=usetab,newtab
 let notabs = 0
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
-"nnoremap <F8> :sbnext<cr>
-"nnoremap <S-F8> :sbprevious<cr>
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_max_files=0
 let g:ctrlp_follow_symlinks=1
@@ -131,7 +132,7 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 "Syntastic Settings
 "let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 let g:syntastic_cs_checkers = ['code_checker']
-"let g:syntastic_cs_quiet_messages = { 'level': 'warnings' }
+let g:syntastic_cs_quiet_messages = { 'level': 'warnings' }
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_python_checkers = ['flake8', 'python']
 set statusline+=%#warningmsg#
@@ -143,6 +144,7 @@ if has('statusline')
     set statusline+=\ [%{&ff}/%Y]
     set statusline+=\ [%{getcwd()}]
     set statusline+=%=%-14.(%l,%c%V%)\ %p%%
+	set statusline+=%{ObsessionStatus()}
 endif
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
@@ -153,7 +155,6 @@ nnoremap <leader>co :Errors<cr>
 nnoremap <leader>bo :Copen<cr>
 nnoremap <leader>cc :lclose<cr>
 nnoremap <leader>ck :SyntasticCheck<cr>
-"nnoremap <leader>rp :new | r ! python %<cr>
 nnoremap <silent> <leader>= :exe "resize " . (winheight(0) * 3/2)<cr>
 nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<cr>
 nnoremap <silent> <leader>v= :exe "vertical resize " . (winheight(0) * 3/2)<cr>
@@ -161,8 +162,6 @@ nnoremap <silent> <leader>v- :exe "vertical resize " . (winheight(0) * 2/3)<cr>
 autocmd FileType py set omnifunc=jedi#Complete
 autocmd FileType python set completeopt-=preview
 "OmniSharp Settings
-"set runtimepath^=~/vimfiles/bundle/ctrlp.vim
-set runtimepath^=~/vimfiles/bundle/vim-csharp
 set noshowmatch
 set completeopt=longest,menuone
 set pumheight=10
