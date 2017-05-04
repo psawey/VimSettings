@@ -1,5 +1,6 @@
 set runtimepath^=$HOME/vimfiles/autoload
-colorscheme vsDesert
+set runtimepath^=$HOME/vimfiles/bundle/vim-csharp
+colorscheme desert
 set ai
 set hlsearch
 set nocp
@@ -31,7 +32,7 @@ set pastetoggle=<F11>
 set shiftwidth=4
 set softtabstop=0
 set tabstop=4
-set noexpandtab
+set expandtab
 set autoindent
 set preserveindent
 set clipboard=unnamed
@@ -49,19 +50,22 @@ set cursorline
 hi CursorLine term=bold cterm=bold guibg=Grey40
 hi Search guibg=peru guifg=wheat cterm=NONE ctermfg=grey ctermbg=blue
 "XmlLint Formatting
-map @@x :set filetype=xml<CR> :%!xmllint --format --recover - 2>/dev/null<CR>
-map @@j :set filetype=xml<CR> :%!python -m json.tool<CR>
+map @@x :set filetype=xml<CR> :%!C:\cygwin64\bin\xmllint.exe --format --recover - 2>/dev/null<CR>
+map @@j :set filetype=json<CR> :%!python -m json.tool<CR>
 "Xaml Syntax Highlighting
 au BufNewFile,BufRead *.xaml setf xml
 au BufNewFile,BufRead *.nunit setf xml
 "Key Mappings
 inoremap jj <ESC>
-map <F3> :NERDTreeToggle<CR>
-let g:NERDTreeWinSize = 60
+map <F3> :NERDTreeToggle<CR> :NERDTreeMirror<CR>
+let g:NERDTreeWinSize = 70
 let g:NERDTreeWinPos = "right"
+let g:NERDTreeChDirMode = 2
+autocmd vimenter * NERDTree
 let g:AutoPairsMapBS=0
 let g:airline_theme='luna'
-noremap <F2> :buffers<CR>:buffer<Space>
+let g:airline#extensions#tabline#enabled = 1
+noremap <F2> :buffers<CR>:
 nnoremap <F4> :tabs<CR>
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
@@ -78,12 +82,14 @@ nmap <silent> <A-f> *
 nmap <silent> <A-r> <C-r>
 nnoremap <silent> <leader>/ :noh<cr>
 nnoremap <silent> <leader>o o<ESC>
+nnoremap <silent> <leader>i i <ESC>
 "Split Navigation Alt - Movement
 nmap <silent> <A-k> :wincmd k<CR>
 nmap <silent> <A-j> :wincmd j<CR>
 nmap <silent> <A-h> :wincmd h<CR>
 nmap <silent> <A-l> :wincmd l<CR>
 nmap <silent> <A-c> :hide<CR>
+set wildchar=<Tab> wildmenu wildmode=full
 "Maximize Split
 nmap <silent> <A-m> :wincmd _<CR>
 "All Splits Equal
@@ -102,15 +108,20 @@ nmap <silent> <A-s> <C-e>
 nmap <silent> <A-o> <C-y>
 "Tab Close
 nnoremap <leader>ct :tabclose<cr>
+nnoremap <leader>c :bd<cr>
+nnoremap <leader>s :wa!<cr>
 " Tab Navigation
-nnoremap <silent> <A-,> :tabp<cr>
-nnoremap <silent> <A-.> :tabn<cr>
+nnoremap <silent> <A--> :tabp<cr>
+nnoremap <silent> <A-=> :tabn<cr>
+nmap <silent> <A-,> :bp<CR>
+nmap <silent> <A-.> :bn<CR>
 set switchbuf=usetab,newtab
 let notabs = 0
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_max_files=0
 let g:ctrlp_follow_symlinks=1
+let g:ctrlp_switch_buffer='et'
 let g:ctrlp_working_path_mode = 'ra'
 nnoremap <leader>cp :CtrlP<cr>
 nnoremap <leader>cb :CtrlPBuffer<cr>
@@ -166,7 +177,9 @@ set noshowmatch
 set completeopt=longest,menuone
 set pumheight=10
 set splitbelow
-let g:Omnisharp_stop_server = 0
+let g:Omnisharp_stop_server = 1
+let g:Omnisharp_start_server = 1
+let g:OmniSharp_server_type = 'roslyn'
 highlight Pmenu ctermbg=87 gui=bold
 augroup omnisharp_commands
   autocmd!

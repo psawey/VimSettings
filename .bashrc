@@ -1,15 +1,18 @@
 set show-all-if-ambiguous on
 set completion-ignore-case on
 
+stty -ixon
+
 SSH_ENV=$HOME/.ssh/environment
 HISTSIZE=
 HISTFILESIZE=
 
-alias grep='grep --color=auto'
+alias grep='grep --color=always'
 alias hist='history'
 alias ll='ls -lhA'
 alias ls='ls -CF'
 alias lsl='ls -lhFA | less'
+alias powershell='C:\\Windows\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe'
 
 function start_agent {
      echo "Initialising new SSH agent..."
@@ -20,6 +23,9 @@ function start_agent {
      /usr/bin/ssh-add;
 }
 
+function hosts {
+	less /c/Windows/System32/drivers/etc/hosts
+}
 # Source SSH settings, if applicable
 if [ -f "${SSH_ENV}" ]; then
      . ${SSH_ENV} > /dev/null
