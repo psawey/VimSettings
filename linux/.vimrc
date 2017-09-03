@@ -106,11 +106,10 @@ nmap <leader>l :set list!<cr>
 "Scroll Up Down
 nmap <silent> <A-s> <C-e>
 nmap <silent> <A-o> <C-y>
-nnoremap <leader>gp <C-o>
 "Tab Close
 nnoremap <leader>ct :tabclose<cr>
 nnoremap <leader>c :bd<cr>
-noremap <leader>s :wa!<cr>
+nnoremap <leader>s :wa!<cr>
 " Tab Navigation
 nnoremap <silent> <A--> :tabp<cr>
 nnoremap <silent> <A-=> :tabn<cr>
@@ -142,10 +141,11 @@ let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabDefaultCompletionTypeDiscovery = ["&omnifunc:<c-x><c-o>","&completefunc:<c-x><c-n>"]
 let g:SuperTabClosePreviewOnPopupClose = 1
 "Syntastic Settings
-let g:syntastic_cs_code_checker_quiet_messages = { 'regex' : 'missing.xml.comment.for.publicly.visible.type.or.member' }
+"let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 let g:syntastic_cs_checkers = ['code_checker']
+let g:syntastic_cs_quiet_messages = { 'level': 'warnings' }
 let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_python_checkers = ['pylint', 'python']
+let g:syntastic_python_checkers = ['flake8', 'python']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -170,15 +170,11 @@ nnoremap <silent> <leader>= :exe "resize " . (winheight(0) * 3/2)<cr>
 nnoremap <silent> <leader>- :exe "resize " . (winheight(0) * 2/3)<cr>
 nnoremap <silent> <leader>v= :exe "vertical resize " . (winheight(0) * 3/2)<cr>
 nnoremap <silent> <leader>v- :exe "vertical resize " . (winheight(0) * 2/3)<cr>
-augroup python_commands
-  autocmd FileType py set omnifunc=jedi#Complete
-  autocmd FileType python set completeopt-=preview
-  "autocmd BufEnter,TextChanged,InsertLeave *.py SyntasticCheck
-augroup END
-let g:jedi#goto_definitions_command = "<leader>gd"
+autocmd FileType py set omnifunc=jedi#Complete
+autocmd FileType python set completeopt-=preview
 "OmniSharp Settings
 set noshowmatch
-set completeopt=longest,menuone,preview
+set completeopt=longest,menuone
 set pumheight=10
 set splitbelow
 let g:Omnisharp_stop_server = 1
@@ -189,7 +185,7 @@ augroup omnisharp_commands
   autocmd!
   autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
   autocmd FileType cs imap . .<tab>
-  autocmd FileType cs nnoremap <F6> :wa!<cr>:OmniSharpBuildAsync<cr>
+  autocmd FileType cs nnoremap <F5> :wa!<cr>:OmniSharpBuild<cr>
   autocmd FileType cs nnoremap <leader>b :wa!<cr>:OmniSharpBuildAsync<cr>
   autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
   autocmd BufWritePost *.cs call OmniSharp#AddToProject()
@@ -213,7 +209,7 @@ set cmdheight=2
 nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
 vnoremap <leader><space> :call OmniSharp#GetCodeActions('visual')<cr>
 nnoremap <leader>nm :OmniSharpRename<cr>
-nnoremap <F5> :OmniSharpRename<cr>
+nnoremap <F6> :OmniSharpRename<cr>
 command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
 nnoremap <leader>rs :OmniSharpReloadSolution<cr>
 nnoremap <leader>cf :OmniSharpCodeFormat<cr>

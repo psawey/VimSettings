@@ -1,0 +1,237 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    { //Increment
+        "key": "alt+a",
+        "command": "extension.vim_ctrl+a",
+        "when": "editorTextFocus && vim.active && vim.use<C-a> && !inDebugRepl"
+    },
+    { //Decrement
+        "key": "alt+x",
+        "command": "extension.vim_ctrl+x",
+        "when": "editorTextFocus && vim.active && vim.use<C-a> && !inDebugRepl"
+    },
+    { //Page Down
+        "key": "alt+d",
+        "command": "extension.vim_ctrl+d",
+        "when": "editorTextFocus && vim.active && !inDebugRepl"
+    },
+    { //Page Up
+        "key": "alt+u",
+        "command": "extension.vim_ctrl+u",
+        "when": "editorTextFocus && vim.active && vim.use<C-u> && !inDebugRepl"
+    },
+    { //Re-Do
+        "key": "alt+r",
+        "command": "extension.vim_ctrl+r",
+        "when": "editorTextFocus && vim.active && vim.use<C-r> && !inDebugRepl"
+    },
+    { //Format
+        "key": "alt+i",
+        "command": "extension.vim_ctrl+i",
+        "when": "editorTextFocus && vim.active && vim.use<C-i> && !inDebugRepl"
+    },
+    { //Find -> '*'
+        "key": "alt+f",
+        "command": "extension.vim_ctrl+f",
+        "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl"
+    },
+    //Window Navigation
+    {
+        "key": "alt+j",
+        "command": "extension.vim_navigateDown",
+        "when": "vim.use<C-w> && vim.active && editorTextFocus"
+    },
+    {
+        "key": "alt+k",
+        "command": "extension.vim_navigateUp",
+        "when": "vim.use<C-w> && vim.active && editorTextFocus"
+    },
+    {
+        "key": "alt+k",
+        "command": "extension.vim_navigateUp",
+        "when": "vim.use<C-w> && vim.active && terminalFocus"
+    },
+    {
+        "key": "alt+h",
+        "command": "extension.vim_navigateLeft",
+        "when": "vim.use<C-w> && vim.active && editorTextFocus"
+    },
+    {
+        "key": "alt+h",
+        "command": "extension.vim_navigateLeft",
+        "when": "vim.use<C-w> && vim.active && filesExplorerFocus"
+    },
+    {
+        "key": "alt+l",
+        "command": "extension.vim_navigateRight",
+        "when": "vim.use<C-w> && vim.active && editorTextFocus"
+    },
+    //Intellisense Navigation
+    {
+        "key": "alt+j",
+        "command": "extension.vim_ctrl+n",
+        "when": "suggestWidgetVisible && vim.active && vim.use<C-n> && !inDebugRepl"
+    },
+    {
+        "key": "alt+k",
+        "command": "extension.vim_ctrl+p",
+        "when": "suggestWidgetVisible && vim.active && vim.use<C-p> && !inDebugRepl"
+    },
+    {
+        "key": "alt+.",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+pagedown",
+        "command": "-workbench.action.nextEditor"
+    },
+    {
+        "key": "alt+,",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "ctrl+pageup",
+        "command": "-workbench.action.previousEditor"
+    },
+    {
+        "key": "alt+c",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+f4",
+        "command": "-workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+k e",
+        "command": "-workbench.files.action.focusOpenEditorsView"
+    },
+    {
+        "key": "ctrl+r w",
+        "command": "editor.action.toggleRenderWhitespace"
+    },
+    {
+        "key": "f3",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "f2",
+        "command": "workbench.files.action.focusOpenEditorsView"
+    },
+    {
+        "key": "f4",
+        "command": "workbench.files.action.focusFilesExplorer"
+    },
+    {
+        "key": "alt+p",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "j j",
+        "command": "workbench.action.closeQuickOpen",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "escape",
+        "command": "-workbench.action.closeQuickOpen",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.quickOpenNavigateNextInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.quickOpenNavigatePreviousInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "key": "ctrl+shift+p",
+        "command": "-workbench.action.quickOpenNavigatePreviousInFilePicker",
+        "when": "inFilesPicker && inQuickOpen"
+    },
+    {
+        "key": "alt+m",
+        "command": "workbench.action.maximizeEditor"
+    },
+    {
+        "key": "alt+e",
+        "command": "workbench.action.evenEditorWidths"
+    },
+    {
+        "key": "alt+z",
+        "command": "workbench.action.toggleZenMode"
+    },
+    {
+        "key": "ctrl+k z",
+        "command": "-workbench.action.toggleZenMode"
+    },
+    {
+        "key": "alt+s",
+        "command": "workbench.action.terminal.scrollDown",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "-workbench.action.terminal.scrollDown",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+s",
+        "command": "scrollLineDown",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "-scrollLineDown",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+o",
+        "command": "scrollLineUp",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "-scrollLineUp",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "f6",
+        "command": "workbench.action.tasks.build"
+    },
+    {
+        "key": "ctrl+shift+b",
+        "command": "-workbench.action.tasks.build"
+    },
+    {
+        "key": "alt+t",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.navigateUp",
+        "when": "terminalFocus"
+    }
+    // {
+    //     "key": "f4",
+    //     "command": "workbench.view.explorer"
+    // },
+    // {
+    //     "key": "ctrl+shift+e",
+    //     "command": "-workbench.view.explorer"
+    // }
+]

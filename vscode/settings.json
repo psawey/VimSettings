@@ -1,0 +1,221 @@
+{
+    "files.autoSave": "afterDelay",
+    "window.zoomLevel": 0,
+    "window.enableMenuBarMnemonics": false,
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.sideBar.location": "right",
+    "editor.renderWhitespace": "none",
+    "editor.renderControlCharacters": false,
+    "editor.renderIndentGuides": false,
+    "editor.lineNumbers": "relative",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
+    },
+    "workbench.activityBar.visible": true,
+    "workbench.statusBar.visible": true,
+    "window.menuBarVisibility": "default",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.enablePreview": false,
+    "zenMode.hideStatusBar": false,
+    "zenMode.hideTabs": false,
+    "editor.codeLens": false,
+    "workbench.startupEditor": "newUntitledFile",
+    //Vim Settings
+    "vim.leader": "<space>",
+    "vim.hlsearch": true,
+    "vim.disableAnnoyingNeovimMessage": true,
+    "vim.easymotion": true,
+    "vim.incsearch": false,
+    "vim.useSystemClipboard": true,
+    "vim.statusBarColorControl":true,
+    "vim.visualstar": true,
+    "vim.statusBarColors" :
+        {
+            "normal": "#005f5f",
+            "insert": "#5f0000",
+            "visual": "#5f00af",
+            "visualline": "#005f87",
+            "visualblock": "#86592d",
+            "replace": "#000000"
+        },
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"], //Exit Insert Mode
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.otherModesKeyBindings": [
+        {
+            "before": ["<C-i>"],
+            "after": ["=", "i", "{"]
+        },
+        {
+            "before": ["<C-f>"], //Find
+            "after": ["*"]
+        }
+    ],
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before":["leader", "/"], //No Highlighting
+            "after": [],
+            "commands": [
+                {
+                    "command": ":nohl",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before":["leader", "c", "t"], //close tab group
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.closeEditorsInGroup",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before":["leader", "c", "p"], // ctrlp
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.quickOpen"
+                }
+            ]
+        },
+        {
+            "before":["leader", "c", "b"], //ctrlp buffers
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.files.action.focusOpenEditorsView"
+                }
+            ]
+        },
+        {
+            "before":["leader", "g", "p"], //goto previous
+            "after": ["<C-o>"]
+        },
+        {
+            "before":["Z", "Z"], //Save and Exit
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.closeWindow",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before":["leader", "o"], //New Line Normal
+            "after": ["o", "<Esc>"]
+        },
+        {
+            "before":["leader", "O"], //New Line Normal Above
+            "after": ["O", "<Esc>"]
+        },
+        {
+            "before":["leader", "i"], //Insert Line Normal
+            "after": ["i", " ", "<Esc>"]
+        },
+        {
+            "before": ["leader", "g", "d"], //Goto definition
+            "after": ["g", "d"]
+        },
+        {
+            "before": ["leader", "l", "o"], //Toggle Layout
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.toggleEditorGroupLayout",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before":["leader", "b"], //Build
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.tasks.build",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before":["leader", "w", "s"], //Trim Trailing Whitespace
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.trimTrailingWhitespace",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before":["leader", "f", "u"], //Find Usages
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.referenceSearch.trigger",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before":["leader", "j", "g"], //Join Tab Groups
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.joinTwoGroups",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before":["leader", "c", "c"], //Toggle Panel Closed
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.togglePanel",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before":["leader", "c", "o"], //Ctrlp Open Problems
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.actions.view.problems",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before":["leader", "g", "i"], //goto Implementations
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.goToImplementation",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before":["leader", "c", "d"], // Show Debug Console
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.debug.action.toggleRepl",
+                    "args": [],
+                    "when": "!inDebugMode"
+                }
+            ]
+        }
+    ]
+}
