@@ -52,6 +52,11 @@
         "when": "vim.use<C-w> && vim.active && terminalFocus"
     },
     {
+        "key": "alt+k",
+        "command": "extension.vim_navigateUp",
+        "when": "vim.use<C-w> && vim.active && problemFocus"
+    },
+    {
         "key": "alt+h",
         "command": "extension.vim_navigateLeft",
         "when": "vim.use<C-w> && vim.active && editorTextFocus"
@@ -225,13 +230,45 @@
         "key": "alt+k",
         "command": "workbench.action.navigateUp",
         "when": "terminalFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.navigateDown",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "j j",
+        "command": "closeReferenceSearch",
+        "when": "referenceSearchVisible && !config.editor.stablePeek"
+    }, //Reference Search Navigation - WIP
+    {
+        "key": "alt+j",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "referenceSearchVisible && !config.editor.stablePeek"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "referenceSearchVisible && !config.editor.stablePeek"
+      },
+      {
+        "key": "o",
+        "command": "list.toggleExpand",
+        "when": "referenceSearchVisible && !inReferenceSearchEditor && !config.editor.stablePeek"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "-extension.runQuery",
+        "when": "editorTextFocus && editorLangId == 'sql'"
     }
-    // {
-    //     "key": "f4",
-    //     "command": "workbench.view.explorer"
-    // },
-    // {
-    //     "key": "ctrl+shift+e",
-    //     "command": "-workbench.view.explorer"
-    // }
 ]

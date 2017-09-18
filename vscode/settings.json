@@ -17,12 +17,33 @@
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
     "window.menuBarVisibility": "default",
-    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+    "workbench.quickOpen.closeOnFocusLost": true,
     "workbench.editor.enablePreview": false,
     "zenMode.hideStatusBar": false,
     "zenMode.hideTabs": false,
     "editor.codeLens": false,
     "workbench.startupEditor": "newUntitledFile",
+    "omnisharp.projectLoadTimeout": 240,
+    "explorer.autoReveal": false,
+    //MsSql Settings
+    "mssql.messagesDefaultOpen": false,
+    "mssql.connections": [
+        {
+            "server": "ALK-ELIXIR",
+            "database": "",
+            "authenticationType": "Integrated",
+            "profileName": "ELIXIR",
+            "password": ""
+        },
+        {
+            "server": ".",
+            "database": "",
+            "authenticationType": "Integrated",
+            "profileName": "LOCALHOST",
+            "password": ""
+        }
+    ],
     //Vim Settings
     "vim.leader": "<space>",
     "vim.hlsearch": true,
@@ -30,36 +51,53 @@
     "vim.easymotion": true,
     "vim.incsearch": false,
     "vim.useSystemClipboard": true,
-    "vim.statusBarColorControl":true,
+    "vim.statusBarColorControl": true,
     "vim.visualstar": true,
-    "vim.statusBarColors" :
-        {
-            "normal": "#005f5f",
-            "insert": "#5f0000",
-            "visual": "#5f00af",
-            "visualline": "#005f87",
-            "visualblock": "#86592d",
-            "replace": "#000000"
-        },
+    "vim.statusBarColors": {
+        "normal": "#005f5f",
+        "insert": "#5f0000",
+        "visual": "#5f00af",
+        "visualline": "#005f87",
+        "visualblock": "#86592d",
+        "replace": "#000000"
+    },
     "vim.insertModeKeyBindings": [
         {
-            "before": ["j", "j"], //Exit Insert Mode
-            "after": ["<Esc>"]
+            "before": [ //Exit Insert Mode
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
         }
     ],
     "vim.otherModesKeyBindings": [
         {
-            "before": ["<C-i>"],
-            "after": ["=", "i", "{"]
+            "before": [ //Format Block
+                "<C-i>"
+            ],
+            "after": [
+                "=",
+                "i",
+                "{"
+            ]
         },
         {
-            "before": ["<C-f>"], //Find
-            "after": ["*"]
+            "before": [ //Find
+                "<C-f>"
+            ],
+            "after": [
+                "*"
+            ]
         }
     ],
     "vim.otherModesKeyBindingsNonRecursive": [
         {
-            "before":["leader", "/"], //No Highlighting
+            "before": [ //No Highlighting
+                "leader",
+                "/"
+            ],
             "after": [],
             "commands": [
                 {
@@ -69,7 +107,11 @@
             ]
         },
         {
-            "before":["leader", "c", "t"], //close tab group
+            "before": [ //Close Tab Group
+                "leader",
+                "c",
+                "t"
+            ],
             "after": [],
             "commands": [
                 {
@@ -79,7 +121,11 @@
             ]
         },
         {
-            "before":["leader", "c", "p"], // ctrlp
+            "before": [ //Ctrlp
+                "leader",
+                "c",
+                "p"
+            ],
             "after": [],
             "commands": [
                 {
@@ -88,7 +134,11 @@
             ]
         },
         {
-            "before":["leader", "c", "b"], //ctrlp buffers
+            "before": [ //Ctrlp Buffers
+                "leader",
+                "c",
+                "b"
+            ],
             "after": [],
             "commands": [
                 {
@@ -97,11 +147,20 @@
             ]
         },
         {
-            "before":["leader", "g", "p"], //goto previous
-            "after": ["<C-o>"]
+            "before": [ //goto previous
+                "leader",
+                "g",
+                "p"
+            ],
+            "after": [
+                "<C-o>"
+            ]
         },
         {
-            "before":["Z", "Z"], //Save and Exit
+            "before": [ //Save and Exit
+                "Z",
+                "Z"
+            ],
             "after": [],
             "commands": [
                 {
@@ -111,23 +170,53 @@
             ]
         },
         {
-            "before":["leader", "o"], //New Line Normal
-            "after": ["o", "<Esc>"]
+            "before": [ //New Line Normal
+                "leader",
+                "o"
+            ],
+            "after": [
+                "o",
+                "<Esc>"
+            ]
         },
         {
-            "before":["leader", "O"], //New Line Normal Above
-            "after": ["O", "<Esc>"]
+            "before": [ //New Line Normal Above
+                "leader",
+                "O"
+            ],
+            "after": [
+                "O",
+                "<Esc>"
+            ]
         },
         {
-            "before":["leader", "i"], //Insert Line Normal
-            "after": ["i", " ", "<Esc>"]
+            "before": [ //Insert Line Normal
+                "leader",
+                "i"
+            ],
+            "after": [
+                "i",
+                " ",
+                "<Esc>"
+            ]
         },
         {
-            "before": ["leader", "g", "d"], //Goto definition
-            "after": ["g", "d"]
+            "before": [ //Goto definition
+                "leader",
+                "g",
+                "d"
+            ],
+            "after": [
+                "g",
+                "d"
+            ]
         },
         {
-            "before": ["leader", "l", "o"], //Toggle Layout
+            "before": [ //Toggle Layout
+                "leader",
+                "l",
+                "o"
+            ],
             "after": [],
             "commands": [
                 {
@@ -137,7 +226,10 @@
             ]
         },
         {
-            "before":["leader", "b"], //Build
+            "before": [ //Build
+                "leader",
+                "b"
+            ],
             "after": [],
             "commands": [
                 {
@@ -147,7 +239,11 @@
             ]
         },
         {
-            "before":["leader", "w", "s"], //Trim Trailing Whitespace
+            "before": [ //Trim Trailing Whitespace
+                "leader",
+                "w",
+                "s"
+            ],
             "after": [],
             "commands": [
                 {
@@ -157,7 +253,11 @@
             ]
         },
         {
-            "before":["leader", "f", "u"], //Find Usages
+            "before": [ //Find Usages
+                "leader",
+                "f",
+                "u"
+            ],
             "after": [],
             "commands": [
                 {
@@ -167,7 +267,11 @@
             ]
         },
         {
-            "before":["leader", "j", "g"], //Join Tab Groups
+            "before": [ //Joint Tab Groups
+                "leader",
+                "j",
+                "g"
+            ],
             "after": [],
             "commands": [
                 {
@@ -177,17 +281,30 @@
             ]
         },
         {
-            "before":["leader", "c", "c"], //Toggle Panel Closed
+            "before": [ //Toggle Panel Closed
+                "leader",
+                "c",
+                "c"
+            ],
             "after": [],
             "commands": [
                 {
                     "command": "workbench.action.togglePanel",
                     "args": []
+                },
+                {
+                    "command": "closeReferenceSearch",
+                    "args": [],
+                    "when": "referenceSearchVisible && !config.editor.stablePeek"
                 }
             ]
         },
         {
-            "before":["leader", "c", "o"], //Ctrlp Open Problems
+            "before": [ //Ctrlp Open Problems
+                "leader",
+                "c",
+                "o"
+            ],
             "after": [],
             "commands": [
                 {
@@ -197,7 +314,11 @@
             ]
         },
         {
-            "before":["leader", "g", "i"], //goto Implementations
+            "before": [ //Goto Implementations
+                "leader",
+                "g",
+                "i"
+            ],
             "after": [],
             "commands": [
                 {
@@ -207,13 +328,89 @@
             ]
         },
         {
-            "before":["leader", "c", "d"], // Show Debug Console
+            "before": [ //Show Debug Console
+                "leader",
+                "c",
+                "d"
+            ],
             "after": [],
             "commands": [
                 {
                     "command": "workbench.debug.action.toggleRepl",
                     "args": [],
                     "when": "!inDebugMode"
+                }
+            ]
+        },
+        {
+            "before": [ //New File
+                "leader",
+                "n"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.newUntitledFile",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [ //Format Document
+                "leader",
+                "f",
+                "d"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "editor.action.formatDocument",
+                    "args": [],
+                    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+                }
+            ]
+        },
+        {
+            "before": [ //Format Document
+                "leader",
+                "r",
+                "q"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "extension.runQuery",
+                    "args": [],
+                    "when": "editorTextFocus && editorLangId == 'sql'"
+                }
+            ]
+        },
+        {
+            "before": [ //Advanced New File
+                "leader",
+                "a",
+                "n"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "extension.advancedNewFile",
+                    "args": [],
+                    "when": "editorTextFocus"
+                }
+            ]
+        },
+        {
+            "before": [ //Terminal Focus
+                "leader",
+                "t"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.terminal.focus",
+                    "args": [],
+                    "when": "editorTextFocus"
                 }
             ]
         }
