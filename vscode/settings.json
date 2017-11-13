@@ -22,6 +22,7 @@
     "workbench.editor.enablePreview": false,
     "zenMode.hideStatusBar": false,
     "zenMode.hideTabs": false,
+    "zenMode.hideActivityBar": false,
     "editor.codeLens": false,
     "workbench.startupEditor": "newUntitledFile",
     "omnisharp.projectLoadTimeout": 240,
@@ -190,7 +191,7 @@
             ]
         },
         {
-            "before": [ //Insert Line Normal
+            "before": [ //Insert Space Normal
                 "leader",
                 "i"
             ],
@@ -198,6 +199,25 @@
                 "i",
                 " ",
                 "<Esc>"
+            ]
+        },
+        {
+            "before": [ //Insert Space Line Feed Normal
+                "leader",
+                "I"
+            ],
+            "after": [
+                "i",
+                "<CR>",
+                "<Esc>",
+                ">",
+                ">"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.trimTrailingWhitespace",
+                    "args": []
+                }
             ]
         },
         {
@@ -409,6 +429,48 @@
             "commands": [
                 {
                     "command": "workbench.action.terminal.focus",
+                    "args": [],
+                    "when": "editorTextFocus"
+                }
+            ]
+        },
+        {
+            "before": [ //Fold Area - WIP
+                "leader",
+                "z",
+                "f"
+            ],
+            "commands": [
+                {
+                    "command": "editor.fold",
+                    "args": [],
+                    "when": "editorTextFocus"
+                }
+            ]
+        },
+        {
+            "before": [ //UnFold Area
+                "leader",
+                "z",
+                "a"
+            ],
+            "commands": [
+                {
+                    "command": "editor.unfoldAll",
+                    "args": [],
+                    "when": "editorTextFocus"
+                }
+            ]
+        },
+        {
+            "before": [ //Reload Window
+                "leader",
+                "r",
+                "l"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.reloadWindow",
                     "args": [],
                     "when": "editorTextFocus"
                 }
