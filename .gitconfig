@@ -21,12 +21,11 @@
 	alias = config --get-regexp ^alias\\.
 	ut = ls-files --others --exclude-standard
 	mo = ls-files --modified --exclude-standard
-	in = "!f(){ git log --stat=250 $1..${2:-origin}/$1; }; f"
-	out = "!f() { git log --stat=250 ${2:-origin}/$1..$1; }; f"
+	in = "!f(){ git log --stat=250 --no-merges $1..${2:-origin}/$1; }; f"
+	out = "!f() { git log --stat=250 --no-merges ${2:-origin}/$1..$1; }; f"
 	staged = diff --name-status --cached
-	ls = ls-files	
+	ls = ls-files
 	addm = add -u
-	last = "!f() { git log --stat=250 -p -${1:-1}; }; f"
 	rf = remote -v update #Remote Refresh
 	bs = branch -vv #Branch Status
     rfs = "!f() { git rf && echo && git bs; }; f" #Remote Refresh Branch Status
@@ -35,21 +34,17 @@
 	ignore = "!f() { git update-index --assume-unchanged $1; }; f" #Ignore File
 	track = "!f() { git update-index --no-assume-unchanged $1; }; f" #Track Ignored File
 	glog = log --graph --decorate
-	slog = log -w -b #Ignores Whitespace on Log
-	flog = log --stat=250 -p #Full Log
-	stlog = log --stat=250 #Stat Log
+	hist = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	slog = log -w -b --no-merges #Ignores Whitespace on Log
+	flog = "!f() { git log --stat=250 -p -w -u --no-merges $@ $(fzf); }; f"
+	stlog = "!f() { git log --stat=250 --no-merges $@ $(fzf); }; f"
 	sdiff = diff -w -b #Ignores Whitespace on Diff
 	sr = show-ref
-	stash-ua = "!git stash show -p stash@{${1:-0}} | git apply -R" 
+	stash-ua = "!git stash show -p stash@{${1:-0}} | git apply -R"
 	rl = rev-list
-	#Tfs Related Aliases
-	tpull = tfs pull --debug #Tfs Pull
-	trpull = tfs pull --rebase --debug #Tfs Pull Rebase
-	tpush = tfs rcheckin --debug #Tfs Push
-	trf = tfs fetch --debug #Tfs Remote Refresh
-	tbs = log --pretty=format:"%h%x09%an%x09%ad%x09%s" master..tfs/default #Tfs Branch Status
-	trfs = "!f() { git trf && echo && git tbs; }; f" #Tfs Remote Refresh master Branch Status
 	dllclean = clean -fxd -- '*.dll' ./
+	smup = submodule update --remote --merge
+	tasks = grep -h -e '^task.build-' --or \\( -e '^task.install-' \\) psake_scripts/
 [color]
 	ui = auto
 	interactive = auto
@@ -62,17 +57,19 @@
 	changed = yellow bold
 	untracked = red bold
 [gui]
-	recentrepo = 
+	recentrepo =
 [merge]
 	tool = kdiff3
 [credential]
 [diff]
 	guitool = kdiff3
+	renamelimit = 3883
 [core]
 	editor = vim
 	autocrlf = true
 	preloadindex = true
 	fscache = true
+	excludesfile = ~/.gitignore_global
 	whitespace = cr-at-eol
 [mergetool "kdiff3"]
 	path = C:/Program Files/KDiff3/kdiff3.exe

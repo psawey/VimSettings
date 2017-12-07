@@ -27,6 +27,9 @@
     "workbench.startupEditor": "newUntitledFile",
     "omnisharp.projectLoadTimeout": 240,
     "explorer.autoReveal": false,
+    "git.autorefresh": false,
+    "vsicons.projectDetection.disableDetect": true,
+    "git.decorations.enabled": false,
     //MsSql Settings
     "mssql.messagesDefaultOpen": false,
     "mssql.connections": [
@@ -117,6 +120,20 @@
             "commands": [
                 {
                     "command": "workbench.action.closeEditorsInGroup",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [ //Close All Editors
+                "leader",
+                "c",
+                "a"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.closeAllEditors",
                     "args": []
                 }
             ]

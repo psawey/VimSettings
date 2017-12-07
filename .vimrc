@@ -1,4 +1,4 @@
-set runtimepath^=$HOME/vimfiles/autoload
+set runtimepath^=$HOME/.vim/autoload
 set runtimepath^=$HOME/vimfiles/bundle/vim-csharp
 colorscheme desert
 set ai
@@ -107,6 +107,7 @@ nmap <leader>l :set list!<cr>
 nmap <silent> <A-s> <C-e>
 nmap <silent> <A-o> <C-y>
 nnoremap <leader>gp <C-o>
+"set scrolloff=25
 "Tab Close
 nnoremap <leader>ct :tabclose<cr>
 nnoremap <leader>c :bd<cr>
@@ -182,7 +183,7 @@ set completeopt=longest,menuone,preview
 set pumheight=10
 set splitbelow
 let g:Omnisharp_stop_server = 1
-let g:Omnisharp_start_server = 1
+let g:Omnisharp_start_server = 0
 let g:OmniSharp_server_type = 'roslyn'
 highlight Pmenu ctermbg=87 gui=bold
 augroup omnisharp_commands

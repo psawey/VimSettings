@@ -272,23 +272,7 @@
         "when": "editorTextFocus && editorLangId == 'sql'"
     },
     {
-        "key": "z f",
-        "command": "editor.fold",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+shift+[",
-        "command": "-editor.fold",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "z a",
-        "command": "editor.unfoldAll",
-        "when": "editorTextFocus"
-    },
-    {
-        "key": "ctrl+k ctrl+j",
-        "command": "-editor.unfoldAll",
-        "when": "editorTextFocus"
+        "key": "ctrl+r l",
+        "command": "workbench.action.reloadWindow"
     }
 ]
