@@ -16,7 +16,7 @@
     },
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
-    "window.menuBarVisibility": "default",
+    "window.menuBarVisibility": "hidden",
     "workbench.editor.enablePreviewFromQuickOpen": true,
     "workbench.quickOpen.closeOnFocusLost": true,
     "workbench.editor.enablePreview": false,
@@ -24,12 +24,13 @@
     "zenMode.hideTabs": false,
     "zenMode.hideActivityBar": false,
     "editor.codeLens": false,
-    "workbench.startupEditor": "newUntitledFile",
+    "workbench.startupEditor": "none",
     "omnisharp.projectLoadTimeout": 240,
     "explorer.autoReveal": false,
     "git.autorefresh": false,
     "vsicons.projectDetection.disableDetect": true,
     "git.decorations.enabled": false,
+    "workbench.panel.location": "bottom",
     //MsSql Settings
     "mssql.messagesDefaultOpen": false,
     "mssql.connections": [
@@ -51,12 +52,12 @@
     //Vim Settings
     "vim.leader": "<space>",
     "vim.hlsearch": true,
-    "vim.disableAnnoyingNeovimMessage": true,
     "vim.easymotion": true,
     "vim.incsearch": false,
     "vim.useSystemClipboard": true,
-    "vim.statusBarColorControl": true,
+    "vim.statusBarColorControl": false,
     "vim.visualstar": true,
+    "vim.cmdLineInitialColon": true,
     "vim.statusBarColors": {
         "normal": "#005f5f",
         "insert": "#5f0000",
@@ -488,6 +489,60 @@
             "commands": [
                 {
                     "command": "workbench.action.reloadWindow",
+                    "args": [],
+                    "when": "editorTextFocus"
+                }
+            ]
+        },
+        {
+            "before": [ //ReplaceWithRegister - inner word
+                "g", "r", "i", "w"
+            ],
+            "after": [
+                "v", "i", "w", "\"", "*", "p", "y", "i", "w"
+            ]
+        },
+        {
+            "before": [ //ReplaceWithRegister - inner Word
+                "g", "r", "i", "W"
+            ],
+            "after": [
+                "v", "i", "W", "\"", "*", "p", "y", "i", "W"
+            ]
+        },
+        {
+            "before": [ //ReplaceWithRegister - around word
+                "g", "r", "a", "w"
+            ],
+            "after": [
+                "v", "a", "w", "\"", "*", "p", "y", "a", "w"
+            ]
+        },
+        {
+            "before": [ //ReplaceWithRegister - line
+                "g", "r", "r"
+            ],
+            "after": [
+                "V", "\"", "*", "p", "Y"
+            ]
+        },
+        {
+            "before": [ //ReplaceWithRegister - end of line
+                "g", "r", "$"
+            ],
+            "after": [
+                "v", "$", "\"", "*", "p", "Y"
+            ]
+        },
+        {
+            "before": [ //Split Window
+                "leader",
+                "s",
+                "p"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.splitEditor",
                     "args": [],
                     "when": "editorTextFocus"
                 }

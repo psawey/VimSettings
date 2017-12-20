@@ -10,8 +10,8 @@ HISTFILESIZE=
 alias grep='grep --color=always'
 alias ll='ls -lhA'
 alias ls='ls -CF'
-alias lsl='ls -lhFA | less'
-alias powershell='C:\\Windows\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe'
+alias lsl='ls -lhFA | /c/Program\ Files/Git/usr/bin/less -IRFX'
+# alias powershell='C:\\Windows\\sysnative\\WindowsPowerShell\\v1.0\\powershell.exe'
 
 function start_agent {
      echo "Initialising new SSH agent..."
@@ -22,8 +22,16 @@ function start_agent {
      /usr/bin/ssh-add;
 }
 
+function rchoco {
+    powershell ~/bin/rchoco.ps1 "$@"
+}
+
 function rg {
-    /c/ProgramData/chocolatey/bin/rg -p "$@" $(fzf +s --tac | sed 's/\\/\//g') | /c/Program\ Files/Git/usr/bin/less -RFX
+    /c/ProgramData/chocolatey/bin/rg -i -p "$@" $(fzf +s --tac | sed 's/\\/\//g') | /c/Program\ Files/Git/usr/bin/less -IRFX
+}
+
+function rgr {
+    /c/ProgramData/chocolatey/bin/rg -i -p "$@" | /c/Program\ Files/Git/usr/bin/less -IRFX
 }
 
 function code {
@@ -31,7 +39,7 @@ function code {
 }
 
 function less {
-    /c/Program\ Files/Git/usr/bin/less -IRFX $(fzf) "$@"
+    /c/Program\ Files/Git/usr/bin/less -IRFX "$@" $(fzf)
 }
 
 function hist {

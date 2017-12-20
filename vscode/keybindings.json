@@ -111,7 +111,7 @@
         "command": "-workbench.files.action.focusOpenEditorsView"
     },
     {
-        "key": "ctrl+r w",
+        "key": "ctrl+r ctrl+w",
         "command": "editor.action.toggleRenderWhitespace"
     },
     {
@@ -219,12 +219,17 @@
         "command": "workbench.action.tasks.build"
     },
     {
+        "key": "f6",
+        "command": "extension.runQuery",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    {
         "key": "ctrl+shift+b",
         "command": "-workbench.action.tasks.build"
     },
     {
         "key": "alt+t",
-        "command": "workbench.action.terminal.focus"
+        "command": "workbench.action.terminal.toggleTerminal"
     },
     {
         "key": "alt+k",
@@ -274,5 +279,19 @@
     {
         "key": "ctrl+r l",
         "command": "workbench.action.reloadWindow"
+    },
+    {
+        "key": "ctrl+z f",
+        "command": "editor.fold",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+[",
+        "command": "-editor.fold",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+r k",
+        "command": "workbench.action.toggleMenuBar"
     }
 ]
