@@ -30,7 +30,8 @@
     "git.autorefresh": false,
     "vsicons.projectDetection.disableDetect": true,
     "git.decorations.enabled": false,
-    "workbench.panel.location": "bottom",
+    "editor.wordWrap": "on",
+    "explorer.confirmDragAndDrop": false,
     //MsSql Settings
     "mssql.messagesDefaultOpen": false,
     "mssql.connections": [
@@ -453,34 +454,6 @@
             ]
         },
         {
-            "before": [ //Fold Area - WIP
-                "leader",
-                "z",
-                "f"
-            ],
-            "commands": [
-                {
-                    "command": "editor.fold",
-                    "args": [],
-                    "when": "editorTextFocus"
-                }
-            ]
-        },
-        {
-            "before": [ //UnFold Area
-                "leader",
-                "z",
-                "a"
-            ],
-            "commands": [
-                {
-                    "command": "editor.unfoldAll",
-                    "args": [],
-                    "when": "editorTextFocus"
-                }
-            ]
-        },
-        {
             "before": [ //Reload Window
                 "leader",
                 "r",
@@ -523,7 +496,7 @@
                 "g", "r", "r"
             ],
             "after": [
-                "V", "\"", "*", "p", "Y"
+                "V", "\"", "*", "p", "0", "y", "$"
             ]
         },
         {
@@ -531,7 +504,7 @@
                 "g", "r", "$"
             ],
             "after": [
-                "v", "$", "\"", "*", "p", "Y"
+                "v", "$", "\"", "*", "p"//, "y", "$"
             ]
         },
         {
@@ -546,6 +519,61 @@
                     "args": [],
                     "when": "editorTextFocus"
                 }
+            ]
+        },
+        {
+            "before": [ //Debug focus
+                "leader",
+                "d",
+                "b"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.view.debug",
+                    "args": [],
+                    "when": "editorTextFocus"
+                }
+            ]
+        },
+        {
+            "before": [ //Explorer focus
+                "leader",
+                "e"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.view.explorer",
+                    "args": [],
+                    "when": "editorTextFocus"
+                }
+            ]
+        },
+        {
+            "before": [ //Yank Line No Newline
+                "leader",
+                "y",
+                "y"
+            ],
+            "after": [
+                "0", "y", "$"
+            ]
+        },
+        {
+            "before": [ //Delete Line No Newline
+                "leader",
+                "d",
+                "d"
+            ],
+            "after": [
+                "0", "d", "$"
+            ]
+        },
+        {
+            "before": [ //Yank End of Line No Newline
+                "Y"
+            ],
+            "after": [
+                "y", "$"
             ]
         }
     ]

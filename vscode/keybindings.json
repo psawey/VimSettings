@@ -291,7 +291,13 @@
         "when": "editorTextFocus"
     },
     {
-        "key": "ctrl+r k",
-        "command": "workbench.action.toggleMenuBar"
+        "key": "ctrl+z a",
+        "command": "editor.unfoldAll",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+k ctrl+j",
+        "command": "-editor.unfoldAll",
+        "when": "editorTextFocus"
     }
 ]
