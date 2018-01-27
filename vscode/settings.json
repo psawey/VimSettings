@@ -31,6 +31,7 @@
     "vsicons.projectDetection.disableDetect": true,
     "git.decorations.enabled": false,
     "editor.wordWrap": "on",
+    "editor.multiCursorModifier": "ctrlCmd",
     "explorer.confirmDragAndDrop": false,
     //MsSql Settings
     "mssql.messagesDefaultOpen": false,
@@ -389,7 +390,7 @@
             "after": [],
             "commands": [
                 {
-                    "command": "workbench.action.files.newUntitledFile",
+                    "command": "workbench.action.files.newFile",
                     "args": []
                 }
             ]
@@ -576,5 +577,8 @@
                 "y", "$"
             ]
         }
-    ]
+    ],
+    "vim.handleKeys": {
+        "<C-d>": true
+    }
 }
