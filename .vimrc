@@ -1,4 +1,4 @@
-set runtimepath^=$HOME/.vim/autoload
+set runtimepath^=$HOME/vimfiles/autoload
 set runtimepath^=$HOME/vimfiles/bundle/vim-csharp
 colorscheme desert
 set ai
@@ -61,7 +61,7 @@ map <F3> :NERDTreeToggle<CR> :NERDTreeMirror<CR>
 let g:NERDTreeWinSize = 70
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeChDirMode = 2
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree
 let g:AutoPairsMapBS=0
 let g:airline_theme='luna'
 let g:airline#extensions#tabline#enabled = 1

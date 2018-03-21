@@ -11,8 +11,6 @@
     "editor.lineNumbers": "relative",
     "workbench.colorCustomizations": {
         "statusBar.background": "#005f5f",
-        "statusBar.noFolderBackground": "#005f5f",
-        "statusBar.debuggingBackground": "#005f5f"
     },
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
@@ -23,6 +21,7 @@
     "zenMode.hideStatusBar": false,
     "zenMode.hideTabs": false,
     "zenMode.hideActivityBar": false,
+    "zenMode.centerLayout": false,
     "editor.codeLens": false,
     "workbench.startupEditor": "none",
     "omnisharp.projectLoadTimeout": 240,
@@ -60,6 +59,7 @@
     "vim.statusBarColorControl": false,
     "vim.visualstar": true,
     "vim.cmdLineInitialColon": true,
+    "vim.sneak": true,
     "vim.statusBarColors": {
         "normal": "#005f5f",
         "insert": "#5f0000",
@@ -390,8 +390,9 @@
             "after": [],
             "commands": [
                 {
-                    "command": "workbench.action.files.newFile",
-                    "args": []
+                    "command": "workbench.action.files.newUntitledFile",
+                    "args": [],
+                    "when": "editorTextFocus"
                 }
             ]
         },
@@ -466,6 +467,30 @@
                     "args": [],
                     "when": "editorTextFocus"
                 }
+            ]
+        },
+        {
+            "before": [ //ReplaceWithRegister - inner double quote
+                "g", "r", "i", "\""
+            ],
+            "after": [
+                "v", "i", "\"", "\"", "*", "p", "y", "i", "\""
+            ]
+        },
+        {
+            "before": [ //ReplaceWithRegister - inner right parenthesis
+                "g", "r", "i", ")"
+            ],
+            "after": [
+                "v", "i", ")", "\"", "*", "p", "y", "i", ")"
+            ]
+        },
+        {
+            "before": [ //ReplaceWithRegister - inner left parenthesis
+                "g", "r", "i", "("
+            ],
+            "after": [
+                "v", "i", "(", "\"", "*", "p", "y", "i", "("
             ]
         },
         {
@@ -575,6 +600,16 @@
             ],
             "after": [
                 "y", "$"
+            ]
+        },
+        {
+            "before": [ //Paste Comma
+                "leader",
+                "p",
+                "c"
+            ],
+            "after": [
+                "A", ",", "<Esc>"
             ]
         }
     ],

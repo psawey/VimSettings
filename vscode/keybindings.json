@@ -121,7 +121,7 @@
         "command": "-workbench.files.action.focusOpenEditorsView"
     },
     {
-        "key": "ctrl+r ctrl+w",
+        "key": "ctrl+r w",
         "command": "editor.action.toggleRenderWhitespace"
     },
     {
@@ -329,5 +329,15 @@
         "key": "alt+r",
         "command": "renameFile",
         "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+n t",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+p t",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "editorFocus"
     }
 ]

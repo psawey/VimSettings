@@ -5,4 +5,4 @@ test -f ~/.bashrc && . ~/.bashrc
 # export FZF_DEFAULT_COMMAND='/c/ProgramData/chocolatey/bin/rg.exe --files --color never'
 export FZF_DEFAULT_COMMAND='fd --color never'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up,alt-o:toggle+down --reverse --multi'
+export FZF_DEFAULT_OPTS='--bind alt-j:down,alt-k:up,alt-o:toggle+down,alt-h:previous-history,alt-l:next-history --reverse --multi --history=C:\\fzf\\fzf-history'

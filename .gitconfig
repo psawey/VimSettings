@@ -17,6 +17,7 @@
 	br = branch
 	ci = commit
 	co = checkout
+	pco = checkout -p
 	up = "!git remote update -p; git merge --ff-only @{u}"
 	alias = config --get-regexp ^alias\\.
 	ut = ls-files --others --exclude-standard
@@ -27,7 +28,7 @@
 	ls = ls-files
 	praise = "!f() { git blame -s $@ $(fzf); }; f"
 	addm = add -u
-	addp = "!f() { git add -p $@ $(git status -s | fzf -m); }; f"
+	padd = "!f() { git add -p $@ $(git status -s | fzf -m); }; f"
 	rf = remote -v update #Remote Refresh
 	bs = branch -vv #Branch Status
     rfs = "!f() { git rf && echo && git bs; }; f" #Remote Refresh Branch Status

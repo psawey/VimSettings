@@ -4,6 +4,7 @@ set completion-ignore-case on
 stty -ixon
 
 SSH_ENV=$HOME/.ssh/environment
+TERM_PROGRAM=Hyper
 HISTSIZE=
 HISTFILESIZE=
 
@@ -26,20 +27,20 @@ function rchoco {
     powershell ~/bin/rchoco.ps1 "$@"
 }
 
-function rg {
-    /c/ProgramData/chocolatey/bin/rg -i -p "$@" $(fzf +s --tac | sed 's/\\/\//g') | /c/Program\ Files/Git/usr/bin/less -IRFX
-}
-
 function rgr {
-    /c/ProgramData/chocolatey/bin/rg -i -p "$@" | /c/Program\ Files/Git/usr/bin/less -IRFX
+    /c/ProgramData/chocolatey/bin/rg -i -p --type-add fs:*.{fs}* "$@" $(fzf +s --tac | sed 's/\\/\//g') | /c/Program\ Files/Git/usr/bin/less -IRFX
 }
 
-function code {
-    /c/Program\ Files/Microsoft\ VS\ Code/bin/code "$@" $(fzf)
+function rg {
+    /c/ProgramData/chocolatey/bin/rg -i -p --type-add fs:*.{fs}* "$@" | /c/Program\ Files/Git/usr/bin/less -IRFX
+}
+
+function lessr {
+    /c/Program\ Files/Git/usr/bin/less -IRFX "$@" $(fzf)
 }
 
 function less {
-    /c/Program\ Files/Git/usr/bin/less -IRFX "$@" $(fzf)
+    /c/Program\ Files/Git/usr/bin/less -IRFX "$@"
 }
 
 function hist {
